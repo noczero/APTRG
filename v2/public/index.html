@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title> Zero-Inside</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="css/theme.css">
+
+	<!-- SCRIPT -->
+	<script src="p5/p5-release/p5.min.js"></script>
+	<script src="p5/p5-release/addons/p5.dom.min.js"></script>
+
+
+    <script>
+          var label, serverResponse;  // UI elements
+         
+          function setup() {      
+           // label = createSpan(" ");  // the label 
+           // label.position(10,20);        // position it
+           // 
+           
+            serverResponse = createSpan();  // create a div for server responses
+           // serverResponse.position("absolute"); 
+            serverResponse.position(110,463);    // position it
+            getData(1);               // make a request back to the server
+
+          }
+          
+          // this function makes a call to the server:
+            function getData(perintah) {
+              httpGet('/device/' + perintah, update);
+            }
+            
+            // update the page when the server responds:
+            function update(data) {
+              serverResponse.html(data);    // put the response in the span
+              getData(1);             // make another call to the server
+            }
+            
+          </script>
+</head>
+<body>
+
+<!--Top Bar-->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container">
+	  	<div class="navbar-header"> 
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">APTRG</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            	<li class="active"><a href="#">Home</a></li>
+            	<li><a href="#about">Connect</a></li>
+           	 	<li><a href="#contact">LOG</a></li>
+        
+              </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+ <div class="container theme-showcase" role="main">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <h2>APTRG - Telkom University</h2>
+        <p> This site shows you the data from our UAV, You can monitoring our service through this website. Enjoy. #FTWTYWC</p>
+      </div>
+
+	<div class="page-header">
+
+        <h1>Data</h1>
+  </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">RAW Data</h3>
+            </div>
+            <div class="panel-body" id="raw">
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <h3 class="panel-title">Temperature</h3>
+            </div>
+            <div class="panel-body">
+
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="panel panel-warning">
+            <div class="panel-heading">
+              <h3 class="panel-title">Humidty</h3>
+            </div>
+            <div class="panel-body">
+             
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Graph -->
+
+  <div class="page-header">
+    <h1> Grafik</h1>
+  </div>
+	
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/docs.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+</body>
+</html>
